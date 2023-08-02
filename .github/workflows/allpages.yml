@@ -39,6 +39,10 @@ jobs:
               continue
             fi
 
+            LAST_PAGE_TITLE=$(echo "$RESPONSE" | jq -r '.query.allpages | last(.[]) | .title')
+            echo "Last page title: $LAST_PAGE_TITLE"
+            echo "cURL result: $RESPONSE"
+
             ALL_PAGES+="$(echo "$RESPONSE" | jq -r '.query.allpages[].title')\n"
             CONTINUE=$(echo "$RESPONSE" | jq -r '.continue?.apcontinue')
           done

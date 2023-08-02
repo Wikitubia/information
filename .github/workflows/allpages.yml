@@ -1,11 +1,9 @@
 name: Fetch all pages
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   fetch_pages:
@@ -21,26 +19,39 @@ jobs:
         run: |
           ALL_PAGES=""
           CONTINUE=""
+          ATTEMPTS=0
+
           while [[ -n "$CONTINUE" || -z "$ALL_PAGES" ]]; do
+            ATTEMPTS=$((ATTEMPTS + 1))
+            echo "Fetching pages - Attempt $ATTEMPTS"
+
             RESPONSE=$(curl -s "$WIKI_API_URL" \
                 -d "action=query" \
                 -d "list=allpages" \
                 -d "aplimit=max" \
                 -d "apcontinue=$CONTINUE" \
+                -d "maxlag=5" \
                 -d "format=json")
+            
+            if [[ "$(echo "$RESPONSE" | jq -r '.error?.code')" == "maxlag" ]]; then
+              echo "API is lagging. Retrying in 3 seconds..."
+              sleep 3
+              continue
+            fi
+
             ALL_PAGES+="$(echo "$RESPONSE" | jq -r '.query.allpages[].title')\n"
             CONTINUE=$(echo "$RESPONSE" | jq -r '.continue?.apcontinue')
           done
 
-          echo -e "$ALL_PAGES" > pages.txt
+          echo -e "$ALL_PAGES" > allpages.txt
 
-          echo "All pages fetched and saved to 'pages.txt'."
+          echo "All pages fetched and saved to 'allpages.txt'."
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-          git add Allpages.txt
-          git commit -m "Update list of pages" || echo 'No changes, skipping push...'
-          git push -u origin main
+          git add pages.txt
+          git commit -m "Update allpages.txt"
+          git push

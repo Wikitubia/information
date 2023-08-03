@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@latest
+        uses: actions/checkout@v3
 
       - name: Fetch and save - Part 1
         id: fetch_and_save_part1
@@ -55,7 +55,7 @@ jobs:
           echo "Part 1 of pages fetched and saved."
 
       - name: Save part 1 artifact
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: pages_part1
           path: pages_part1.txt
@@ -103,7 +103,7 @@ jobs:
           echo "Part 2 of pages fetched and saved."
 
       - name: Save part 2 artifact
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: pages_part2
           path: pages_part2.txt
@@ -114,13 +114,13 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@latest
+        uses: actions/download-artifact@v3
         with:
           name: pages_part1
           path: pages_part1
 
       - name: Download part 2 artifact
-        uses: actions/download-artifact@latest
+        uses: actions/download-artifact@v3
         with:
           name: pages_part2
           path: pages_part2

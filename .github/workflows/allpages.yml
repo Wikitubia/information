@@ -19,7 +19,7 @@ jobs:
       - name: Fetch and save - Part 1
         id: fetch_and_save_part1
         continue-on-error: true
-        timeout-minutes: 360
+        timeout-minutes: 359
         run: |
           ALL_PAGES=""
           CONTINUE=""
@@ -67,7 +67,7 @@ jobs:
     steps:
       - name: Fetch and save - Part 2
         continue-on-error: true
-        timeout-minutes: 360
+        timeout-minutes: 359
         run: |
           ALL_PAGES=""
           CONTINUE=""

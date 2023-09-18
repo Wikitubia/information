@@ -1,9 +1,9 @@
 name: Fetch YouTube Fandom Pages
 
 on:
-  # schedule:
-  #   - cron: '0 0 * * *'
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   fetch-pages:
@@ -11,8 +11,9 @@ jobs:
 
     env:
       API_URL: "https://youtube.fandom.com/api.php"
-      API_PARAMS: "action=query&list=allpages&aplimit=max&format=json"
       OUTPUT_FILE: "allpages.txt"
+      API_PARAMS: "action=query&list=allpages&aplimit=50&format=json"
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout Repository
@@ -27,20 +28,24 @@ jobs:
           PAGE_COUNT=0
 
           while [ -n "$CONTINUE" ] || [ $PAGE_COUNT -eq 0 ]; do
-            # Construct the API request with continuation token
+            # Construct the API request URL with the continuation token
             FULL_PARAMS="$API_PARAMS&$CONTINUE"
             API_REQUEST="$API_URL?$FULL_PARAMS"
 
-            # Use curl to fetch data from the API endpoint and append
-            curl -s "$API_REQUEST" | jq '.query.allpages[].title' >> "$OUTPUT_FILE"
+            # Use curl to fetch data from the API endpoint and append it to the output file
+            PAGE_TITLES=$(curl -s "$API_REQUEST" | jq '.query.allpages[].title')
+            echo "$PAGE_TITLES" >> "$OUTPUT_FILE"
 
-            # Extract the token from the response
+            # Extract the continuation token from the JSON response
             CONTINUE=$(curl -s "$API_REQUEST" | jq -r '.continue.apcontinue')
 
-            # Check if curl was successful
+            # Get the title of the last page in the batch
+            LAST_PAGE=$(echo "$PAGE_TITLES" | tail -n 1)
+
+            # Check if the curl command was successful
             if [ $? -eq 0 ]; then
               PAGE_COUNT=$((PAGE_COUNT+1))
-              echo "Fetched page batch $PAGE_COUNT"
+              echo "Fetched page batch $PAGE_COUNT - Latest Page: $LAST_PAGE"
             else
               echo "Failed to fetch pages from $API_URL"
               exit 1
@@ -48,3 +53,13 @@ jobs:
           done
 
           echo "Successfully fetched and saved all pages to $OUTPUT_FILE"
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add "$OUTPUT_FILE"
+          git commit -m "Update $OUTPUT_FILE"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

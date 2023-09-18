@@ -58,7 +58,8 @@ jobs:
             CONTINUE=$(curl -s "$API_REQUEST" | jq -r '.continue.apcontinue')
           done
 
-          # Commit the resulting text file to the main branch
+      - name: Commit and Push Changes
+        run: |
           git add "$OUTPUT_FILE"
           git commit -m "Update $OUTPUT_FILE"
           git push origin main

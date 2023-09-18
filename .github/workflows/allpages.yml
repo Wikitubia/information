@@ -34,7 +34,12 @@ jobs:
           # Loop until there are no more pages
           while [ -n "$CONTINUE" ] || [ "$CONTINUE" == "0" ]; do
             # Construct the API request URL with continuation token
-            API_REQUEST="$API_URL?action=query&list=allpages&aplimit=50&format=json&apcontinue=$CONTINUE"
+            API_REQUEST="$API_URL?action=query&list=allpages&aplimit=50&format=json"
+
+            # Add the continuation token if available
+            if [ -n "$CONTINUE" ]; then
+              API_REQUEST="$API_REQUEST&apcontinue=$CONTINUE"
+            fi
 
             # Make the API request and extract page titles
             PAGE_TITLES=$(curl -s "$API_REQUEST" | jq -r '.query.allpages[].title')

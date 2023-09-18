@@ -20,8 +20,6 @@ jobs:
 
       - name: Fetch and Save Pages
         run: |
-          #!/bin/bash
-
           # MediaWiki API endpoint
           API_URL="https://youtube.fandom.com/api.php"
 

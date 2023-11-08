@@ -1,0 +1,30 @@
+name: Fetch and Filter Interwiki
+
+on:
+  schedule:
+    - cron: 0 0 * 4,8,12 *
+
+jobs:
+  fetch-and-filter:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Fetch Interwiki JSON
+      run: |
+        curl -o interwiki.json "https://youtube.fandom.com/api.php?action=query&format=json&meta=siteinfo&formatversion=latest&siprop=interwikimap&sifilteriw=local"
+        
+        jq '.query.interwikimap[] | select(.language)' interwiki.json > filtered_interwiki.json
+
+    - name: Move filtered JSON to root
+      run: mv filtered_interwiki.json interwiki.json
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add interwiki.json
+        git commit -m "Update interwiki.json"
+        git push

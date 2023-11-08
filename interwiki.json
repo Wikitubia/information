@@ -1,0 +1,147 @@
+{
+  "prefix": "ca",
+  "local": true,
+  "language": "català",
+  "url": "http://youtube.fandom.com/ca/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "cs",
+  "local": true,
+  "language": "čeština",
+  "url": "http://youtube.fandom.com/cs/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "da",
+  "local": true,
+  "language": "dansk",
+  "url": "http://youtube.fandom.com/da/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "de",
+  "local": true,
+  "language": "Deutsch",
+  "url": "http://youtube.fandom.com/de/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "el",
+  "local": true,
+  "language": "Ελληνικά",
+  "url": "http://youtube.fandom.com/el/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "es",
+  "local": true,
+  "language": "español",
+  "url": "http://youtube.fandom.com/es/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "fr",
+  "local": true,
+  "language": "français",
+  "url": "http://youtube.fandom.com/fr/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "it",
+  "local": true,
+  "language": "italiano",
+  "url": "http://youtube.fandom.com/it/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "ja",
+  "local": true,
+  "language": "日本語",
+  "url": "http://youtube.fandom.com/ja/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "ko",
+  "local": true,
+  "language": "한국어",
+  "url": "http://youtube.fandom.com/ko/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "nl",
+  "local": true,
+  "language": "Nederlands",
+  "url": "http://youtube.fandom.com/nl/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "pl",
+  "local": true,
+  "language": "polski",
+  "url": "http://youtube.fandom.com/pl/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "pt-br",
+  "local": true,
+  "language": "português do Brasil",
+  "url": "http://youtube.fandom.com/pt-br/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "ro",
+  "local": true,
+  "language": "română",
+  "url": "http://youtube.fandom.com/ro/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "ru",
+  "local": true,
+  "language": "русский",
+  "url": "http://youtube.fandom.com/ru/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "th",
+  "local": true,
+  "language": "ไทย",
+  "url": "http://youtube.fandom.com/th/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "tr",
+  "local": true,
+  "language": "Türkçe",
+  "url": "http://youtube-turkiye.fandom.com/tr/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "uk",
+  "local": true,
+  "language": "українська",
+  "url": "http://youtube-ua.fandom.com/uk/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "vi",
+  "local": true,
+  "language": "Tiếng Việt",
+  "url": "http://youtubia-viet-nam.fandom.com/vi/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "zh",
+  "local": true,
+  "language": "中文",
+  "url": "http://youtube.fandom.com/zh/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "zh-tw",
+  "local": true,
+  "language": "中文（臺灣）",
+  "url": "http://youtuber.fandom.com/zh-tw/wiki/$1",
+  "protorel": false
+}

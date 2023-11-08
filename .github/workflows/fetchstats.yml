@@ -1,0 +1,30 @@
+name: Fetch Statistics
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch-statistics:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - run: echo 'Checking out repo'
+
+    - name: Fetch Statistics
+      run: |
+        echo 'Fetching stats'
+        API_URL="https://youtube.fandom.com/api.php"
+        wget "$API_URL?action=query&format=json&meta=siteinfo&siprop=statistics" -O statistics.json
+        echo 'Stats fetched'
+
+    - name: Commit and push changes
+      run: |
+        echo 'Pushing to main'
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add statistics.json
+        git commit -m "Update statistics.json"
+        git push -u origin main || echo 'Source is the same as repository. Skipping push...'

@@ -1,70 +1,70 @@
-name: Fetch YouTube Fandom Pages
+# name: Fetch YouTube Fandom Pages
 
-on:
-  schedule:
-    # - cron: '0 0 * * *'
-  workflow_dispatch:
+# on:
+#   schedule:
+#     # - cron: '0 0 * * *'
+#   workflow_dispatch:
 
-jobs:
-  fetch-pages:
-    runs-on: ubuntu-latest
+# jobs:
+#   fetch-pages:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v3
 
-      - name: Set up Git
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+#       - name: Set up Git
+#         run: |
+#           git config user.name "GitHub Actions"
+#           git config user.email "actions@github.com"
 
-      - name: Fetch and Save Pages
-        run: |
-          # MediaWiki API endpoint
-          API_URL="https://youtube.fandom.com/api.php"
+#       - name: Fetch and Save Pages
+#         run: |
+#           # MediaWiki API endpoint
+#           API_URL="https://youtube.fandom.com/api.php"
 
-          # Output file name
-          OUTPUT_FILE="allpages.txt"
+#           # Output file name
+#           OUTPUT_FILE="allpages.txt"
 
-          # Initialize the continuation token
-          CONTINUE=""
+#           # Initialize the continuation token
+#           CONTINUE=""
 
-          # Loop until there are no more pages
-          while [ -n "$CONTINUE" ] || [ "$CONTINUE" == "0" ]; do
-            # Construct the API request URL with continuation token
-            API_REQUEST="$API_URL?action=query&list=allpages&aplimit=50&format=json"
+#           # Loop until there are no more pages
+#           while [ -n "$CONTINUE" ] || [ "$CONTINUE" == "0" ]; do
+#             # Construct the API request URL with continuation token
+#             API_REQUEST="$API_URL?action=query&list=allpages&aplimit=50&format=json"
 
-            # Add the continuation token if available
-            if [ -n "$CONTINUE" ]; then
-              API_REQUEST="$API_REQUEST&apcontinue=$CONTINUE"
-            fi
+#             # Add the continuation token if available
+#             if [ -n "$CONTINUE" ]; then
+#               API_REQUEST="$API_REQUEST&apcontinue=$CONTINUE"
+#             fi
 
-            # Make the API request and extract page titles
-            PAGE_TITLES=$(curl -s "$API_REQUEST" | jq -r '.query.allpages[].title')
+#             # Make the API request and extract page titles
+#             PAGE_TITLES=$(curl -s "$API_REQUEST" | jq -r '.query.allpages[].title')
 
-            # Check if the API response is empty or contains an error
-            if [ -z "$PAGE_TITLES" ]; then
-              echo "API response is empty or contains an error."
-              exit 1
-            fi
+#             # Check if the API response is empty or contains an error
+#             if [ -z "$PAGE_TITLES" ]; then
+#               echo "API response is empty or contains an error."
+#               exit 1
+#             fi
 
-            # Get the title of the last page in the batch
-            LAST_PAGE=$(echo "$PAGE_TITLES" | tail -n 1)
+#             # Get the title of the last page in the batch
+#             LAST_PAGE=$(echo "$PAGE_TITLES" | tail -n 1)
 
-            # Append page titles to the output file
-            echo "$PAGE_TITLES" >> "$OUTPUT_FILE"
+#             # Append page titles to the output file
+#             echo "$PAGE_TITLES" >> "$OUTPUT_FILE"
 
-            # Output the latest page in the batch for debugging
-            echo "Fetched batch with the latest page: $LAST_PAGE"
+#             # Output the latest page in the batch for debugging
+#             echo "Fetched batch with the latest page: $LAST_PAGE"
 
-            # Extract the continuation token from the JSON response
-            CONTINUE=$(curl -s "$API_REQUEST" | jq -r '.continue.apcontinue')
-          done
+#             # Extract the continuation token from the JSON response
+#             CONTINUE=$(curl -s "$API_REQUEST" | jq -r '.continue.apcontinue')
+#           done
 
-      - name: Commit and Push Changes
-        run: |
-          git add "$OUTPUT_FILE"
-          git commit -m "Update $OUTPUT_FILE"
-          git push origin main
+#       - name: Commit and Push Changes
+#         run: |
+#           git add "$OUTPUT_FILE"
+#           git commit -m "Update $OUTPUT_FILE"
+#           git push origin main
 
-          echo "Successfully fetched and saved all pages to $OUTPUT_FILE and committed it to the main branch."
+#           echo "Successfully fetched and saved all pages to $OUTPUT_FILE and committed it to the main branch."

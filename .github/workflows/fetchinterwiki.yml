@@ -27,5 +27,5 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add interwiki.json
-        git commit -m "Update interwiki.json" || Source is same as repo
+        git commit -m "Update interwiki.json" || echo "Source is same as repo"
         git push

@@ -24,10 +24,12 @@ jobs:
       - name: Filter the statistics file
         run: |
           filtered_data=$(jq '.query.statistics | {"Total pages": .pages, "Articles": .articles, "Total edits": .edits, "Total images": .images, "Active users": .activeusers, "Administrators": .admins}' statistics.json)
+          echo "$filtered_data"
 
       - name: Output as Markdown
         run: |
           markdown_out=$(echo "$filtered_data" | jq -r '["Total pages", "Articles", "Total edits", "Total images", "Active users", "Administrators"], (.[] | [.Pages, .Articles, .Edits, .Images, .Activeusers, .Admins]) | @tsv' | sed 's/\t/ | /g')
+          echo "$markdown_out"
 
       # Runs a set of commands using the runners shell
       - name: Write to file and commit

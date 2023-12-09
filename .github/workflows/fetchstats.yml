@@ -17,7 +17,7 @@ jobs:
       run: |
         echo 'Fetching stats'
         API_URL="https://youtube.fandom.com/api.php"
-        wget "$API_URL?action=query&format=json&meta=siteinfo&siprop=statistics" | jq '.' > statistics.json
+        wget "$API_URL?action=query&format=json&meta=siteinfo&siprop=statistics" -O statistics.json
         echo 'Stats fetched'
 
     - name: Commit and push changes

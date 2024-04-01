@@ -48,6 +48,13 @@
   "protorel": false
 }
 {
+  "prefix": "hi",
+  "local": true,
+  "language": "हिन्दी",
+  "url": "http://youtube.fandom.com/hi/wiki/$1",
+  "protorel": false
+}
+{
   "prefix": "it",
   "local": true,
   "language": "italiano",

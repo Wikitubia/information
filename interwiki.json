@@ -41,6 +41,13 @@
   "protorel": false
 }
 {
+  "prefix": "fi",
+  "local": true,
+  "language": "suomi",
+  "url": "http://youtube.fandom.com/fi/wiki/$1",
+  "protorel": false
+}
+{
   "prefix": "fr",
   "local": true,
   "language": "français",

@@ -1,0 +1,27 @@
+name: Fetch and Commit DB Dump
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+    env:
+      url: "https://s3.amazonaws.com/wikia_xml_dumps/y/yo/youtube_pages_full.xml.7z"
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.2.2
+
+    - name: Download file using cURL
+      run: curl -L -o db-dump/youtube_pages_full.xml.7z ${{ env.url }}
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add db-dump/*
+        git commit -m "Update database dump"
+        git push origin main

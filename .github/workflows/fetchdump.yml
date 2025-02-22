@@ -23,5 +23,5 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add db-dump/*
-        git commit -m "Update database dump"
-        git push origin main
+        git commit -m "Update database dump" || echo "Nothing to commit, working tree clean"
+        git push origin main || echo "Push failed"

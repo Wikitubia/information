@@ -2,6 +2,7 @@
   "prefix": "ca",
   "local": true,
   "language": "català",
+  "bcp47": "ca",
   "url": "http://youtube.fandom.com/ca/wiki/$1",
   "protorel": false
 }
@@ -9,6 +10,7 @@
   "prefix": "cs",
   "local": true,
   "language": "čeština",
+  "bcp47": "cs",
   "url": "http://youtube.fandom.com/cs/wiki/$1",
   "protorel": false
 }
@@ -16,6 +18,7 @@
   "prefix": "da",
   "local": true,
   "language": "dansk",
+  "bcp47": "da",
   "url": "http://youtube.fandom.com/da/wiki/$1",
   "protorel": false
 }
@@ -23,6 +26,7 @@
   "prefix": "de",
   "local": true,
   "language": "Deutsch",
+  "bcp47": "de",
   "url": "http://youtube.fandom.com/de/wiki/$1",
   "protorel": false
 }
@@ -30,6 +34,7 @@
   "prefix": "el",
   "local": true,
   "language": "Ελληνικά",
+  "bcp47": "el",
   "url": "http://youtube.fandom.com/el/wiki/$1",
   "protorel": false
 }
@@ -37,6 +42,7 @@
   "prefix": "es",
   "local": true,
   "language": "español",
+  "bcp47": "es",
   "url": "http://youtube.fandom.com/es/wiki/$1",
   "protorel": false
 }
@@ -44,6 +50,7 @@
   "prefix": "fi",
   "local": true,
   "language": "suomi",
+  "bcp47": "fi",
   "url": "http://youtube.fandom.com/fi/wiki/$1",
   "protorel": false
 }
@@ -51,6 +58,7 @@
   "prefix": "fr",
   "local": true,
   "language": "français",
+  "bcp47": "fr",
   "url": "http://youtube.fandom.com/fr/wiki/$1",
   "protorel": false
 }
@@ -58,6 +66,7 @@
   "prefix": "hi",
   "local": true,
   "language": "हिन्दी",
+  "bcp47": "hi",
   "url": "http://youtube.fandom.com/hi/wiki/$1",
   "protorel": false
 }
@@ -65,6 +74,7 @@
   "prefix": "it",
   "local": true,
   "language": "italiano",
+  "bcp47": "it",
   "url": "http://youtube.fandom.com/it/wiki/$1",
   "protorel": false
 }
@@ -72,6 +82,7 @@
   "prefix": "ja",
   "local": true,
   "language": "日本語",
+  "bcp47": "ja",
   "url": "http://youtube.fandom.com/ja/wiki/$1",
   "protorel": false
 }
@@ -79,6 +90,7 @@
   "prefix": "ko",
   "local": true,
   "language": "한국어",
+  "bcp47": "ko",
   "url": "http://youtube.fandom.com/ko/wiki/$1",
   "protorel": false
 }
@@ -86,13 +98,23 @@
   "prefix": "nl",
   "local": true,
   "language": "Nederlands",
+  "bcp47": "nl",
   "url": "http://youtube.fandom.com/nl/wiki/$1",
+  "protorel": false
+}
+{
+  "prefix": "no",
+  "local": true,
+  "language": "norsk",
+  "bcp47": "no",
+  "url": "http://youtube.fandom.com/no/wiki/$1",
   "protorel": false
 }
 {
   "prefix": "pl",
   "local": true,
   "language": "polski",
+  "bcp47": "pl",
   "url": "http://youtube.fandom.com/pl/wiki/$1",
   "protorel": false
 }
@@ -100,6 +122,7 @@
   "prefix": "pt-br",
   "local": true,
   "language": "português do Brasil",
+  "bcp47": "pt-BR",
   "url": "http://youtube.fandom.com/pt-br/wiki/$1",
   "protorel": false
 }
@@ -107,6 +130,7 @@
   "prefix": "ro",
   "local": true,
   "language": "română",
+  "bcp47": "ro",
   "url": "http://youtube.fandom.com/ro/wiki/$1",
   "protorel": false
 }
@@ -114,6 +138,7 @@
   "prefix": "ru",
   "local": true,
   "language": "русский",
+  "bcp47": "ru",
   "url": "http://youtube.fandom.com/ru/wiki/$1",
   "protorel": false
 }
@@ -121,6 +146,7 @@
   "prefix": "th",
   "local": true,
   "language": "ไทย",
+  "bcp47": "th",
   "url": "http://youtube.fandom.com/th/wiki/$1",
   "protorel": false
 }
@@ -128,6 +154,7 @@
   "prefix": "tr",
   "local": true,
   "language": "Türkçe",
+  "bcp47": "tr",
   "url": "http://youtube-turkiye.fandom.com/tr/wiki/$1",
   "protorel": false
 }
@@ -135,6 +162,7 @@
   "prefix": "uk",
   "local": true,
   "language": "українська",
+  "bcp47": "uk",
   "url": "http://youtube-ua.fandom.com/uk/wiki/$1",
   "protorel": false
 }
@@ -142,6 +170,7 @@
   "prefix": "vi",
   "local": true,
   "language": "Tiếng Việt",
+  "bcp47": "vi",
   "url": "http://youtubia-viet-nam.fandom.com/vi/wiki/$1",
   "protorel": false
 }
@@ -149,6 +178,7 @@
   "prefix": "zh",
   "local": true,
   "language": "中文",
+  "bcp47": "zh",
   "url": "http://youtube.fandom.com/zh/wiki/$1",
   "protorel": false
 }
@@ -156,6 +186,7 @@
   "prefix": "zh-tw",
   "local": true,
   "language": "中文（臺灣）",
+  "bcp47": "zh-Hant-TW",
   "url": "http://youtuber.fandom.com/zh-tw/wiki/$1",
   "protorel": false
 }

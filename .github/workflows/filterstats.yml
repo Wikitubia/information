@@ -34,8 +34,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Write to file and commit
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           echo "$markdown_out" > statistics.md
           git add statistics.md
           git commit -m "Update statistics table" || echo "Source is same as repo"
